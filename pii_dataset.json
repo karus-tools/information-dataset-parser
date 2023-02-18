@@ -1,0 +1,26 @@
+{
+    "female": {
+        "keywords": ["girl", "women", "female", "she/her", "she", "her"],
+        "type": "contains"
+    },
+    "male": {
+        "keywords": ["boy", "men", "male", "he/him", "he", "him"],
+        "type": "contains"
+    },
+    "roblox": {
+        "keywords": ["roblox", "robux"],
+        "type": "contains"
+    },
+    "dislikes": {
+        "keywords": ["dislike", "dislikes"],
+        "type": "list"
+    },
+    "games_played": {
+        "keywords": ["favourite games", "games"],
+        "type": "list"
+    },
+    "connectors": {
+        "keywords": ["and", "finally"],
+        "type": "dont_add_this"
+    }
+}
