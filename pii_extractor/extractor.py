@@ -4,7 +4,7 @@ from typing import Dict, List
 
 class Extractor(Dataset):
 
-    def __init__(self, words: List[str]) -> None:
+    def __init__(self, words: list) -> None:
         super().__init__()
         self.words = words
 

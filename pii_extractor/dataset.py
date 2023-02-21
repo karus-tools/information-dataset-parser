@@ -3,6 +3,8 @@ from typing import List
 from collections import defaultdict
 import json
 
+from .regex import Regex
+
 
 @dataclass
 class DatasetItem:
@@ -11,11 +13,12 @@ class DatasetItem:
     type: str
 
 
-class Dataset:
+class Dataset(Regex):
 
     def __init__(self):
         with open("pii_dataset.json") as f:
             self.dataset = json.load(f)
+            super().__init__(self.dataset)
 
         self.information = defaultdict(list)
         self._dataset_items = None
@@ -26,7 +29,7 @@ class Dataset:
             self._dataset_items = [
                 DatasetItem(name=name, **data)
                 for name, data in self.dataset.items()
-                if data["type"] != "dont_add_this"
+                if data["type"] in ("contains", "list")
             ]
 
         return self._dataset_items
@@ -40,6 +43,11 @@ class Dataset:
         for dataset_item in self.dataset_items:
             function = check_functions[dataset_item.type]
             function(words=words, item=dataset_item)
+
+        for regex_item in self.regex_items:
+            result = regex_item.parse(words=words)
+            if result:
+                self.information[regex_item.name] += result
 
     def contains_keywords(self, words: List[str], item: DatasetItem):
         for word in words:
