@@ -19,6 +19,29 @@
         "keywords": ["favourite games", "games"],
         "type": "list"
     },
+    "email": {
+        "regex_list": ["[\\w.+-]+@[\\w-]+\\.[\\w.-]+"],
+        "type": "regex"
+    },
+    "bitcoin_address": {
+        "regex_list": ["\\b[13][a-km-zA-HJ-NP-Z1-9]{25,34}\\b"],
+        "type": "regex"
+    },
+    "phone_number": {
+        "regex_list": [
+            "\\+1\\s*\\d{3}[\\s.-]?\\d{3}[\\s.-]?\\d{4}\n",
+            "07\\d{9}",
+            "\\+44\\s*(0\\d{1,4}\\s*\\d{3}\\s*\\d{4}|07\\d{9})"
+        ],
+        "type": "regex"
+    },
+    "house_address": {
+        "regex_list": [
+            "^\\s*\\d{1,4}\\s+((?:(?:[A-Z][a-z]*[\\s.'-]?)+)(?:(?:[A-Z][a-z]*[\\s.'-]?)+)?)\\s*,?\\s+((?:(?:[A-Z][a-z]*[\\s.'-]?)+)(?:(?:[A-Z][a-z]*[\\s.'-]?)+)?)\\s*,?\\s*((?:(?:[A-Z][a-z]*[\\s.'-]?)+)(?:(?:[A-Z][a-z]*[\\s.'-]?)+)?|(?:[A-Z]{2}\\d{1,2}[A-Z]?)\\s*\\d[A-Z]{2})\\s*$ \n",
+            "^\\s*\\d{1,6}\\s+([a-zA-Z]+\\s+)+[a-zA-Z]{2,}\\s*,?\\s*[a-zA-Z]{2,}\\s+\\d{5}(?:-\\d{4})?\\s*$\n"
+        ],
+        "type": "regex"
+    },
     "connectors": {
         "keywords": ["and", "finally"],
         "type": "dont_add_this"
